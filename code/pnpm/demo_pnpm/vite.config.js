@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'postcss': path.resolve(__dirname, 'node_modules/postcss'),
+      'vue': path.resolve(__dirname, 'node_modules/vue'),
     }
   }
 })
