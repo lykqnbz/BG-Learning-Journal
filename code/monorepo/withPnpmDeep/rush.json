@@ -1,0 +1,16 @@
+{
+  "rushVersion": "1.0.0",
+  "pnpmVersion": "1.0.0",
+  "pnpmOptions": {
+    "useWorkspaces": true
+  },
+  "gitPolicy": {},
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "variants": [],
+  "projects": []
+}

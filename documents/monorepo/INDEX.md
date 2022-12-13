@@ -4,6 +4,7 @@
 - <a href='#topic3'>workspaces</a>
 - <a href='#topic4'>与pnpm的结合</a>
 - <a href='#topic5'>疑问</a>
+- <a href='#topic6'>集成monorepo方案</a>
 
 ---
 
@@ -66,14 +67,49 @@
 ### <a id='topic4' style='text-decoration:none;'>与pnpm的结合</a>
 `monorepo`和`pnpm`结合使用，`pnpm`由于`symlink`和`hardlink`机制，既极大的缩小了安装包的体积，同时也解决了隐藏依赖的问题，两者十分契合。  
 尝试用`pnpm`构建`monorepo`项目：  
-在已安装完`.pnpm`的情况下，在目录下init一个项目。在其根目录新建`pnpm-workspace.yaml`，内容如下:
-![初始化pnpm-workspace](./img/monorepo_5.png)     
+在已安装完`.pnpm`的情况下，在目录下`init`一个项目。在其根目录新建`pnpm-workspace.yaml`，内容如下:
+![初始化pnpm-workspace](./img/monorepo_5.png)       
+用`pnpm`安装全局共用的包，比如`vue`,`react`,`angular`。  
+```
+ pnpm install vue -w
+```  
+`-w`全称为 `--workspace`表示依赖安装到公共模块的`packages.json`中，也就是根目录下的`packages.json`。   
+接着在packages中新建几个新的公共模块目录:
+```
+├── packages
+│   ├── ui
+│   ├── utils
+│   ├── components
+│   └── web
+```  
+然后每个都执行`pnpm init `或者 `npm create vite`，假设每个`package`的`name` 依次为`@bg/ui` `@bg/utils` `@bg/components` `@bg/web`。   
+`utils`为例，入口文件为`index.js`，首先建立个入口文件。写入测试内容：
+```
+export const add = (a, b) => a + b
+```
+然后在`@bg/web`子项目关联`@bg/utils`子项目:
+```
+pnpm i @bg/utils 
+```
+在项目的`package.json`中`dependencies`中多了关联的子项目
+![dependencies](./img/monorepo_6.png)   
+由于是`workspace`管理的，所有有一个前缀`workspace`。接下来则可以从`package/web`中直接引入这些包了：  
+![引入](./img/monorepo_8.png)   
+页面运行正常，成功获取到子项目内容：  
+![实例](./img/monorepo_7.png)   
+整个基础文件夹构成大致如下：
+```
+├── node_modules
+├── packages
+│   ├── ui
+│   ├── utils
+│   ├── components
+│   └── web
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+```
 
-
-
-
-
----
 
 ### <a id='topic5' style='text-decoration:none;'>疑问</a>
 1.如果将所有项目整合在一起，是否会存在大家一起做需求，然后频繁地代码冲突问题?  
@@ -81,3 +117,5 @@
 3.如果子项目被多个项目引用，项目引用的子项目版本又各不相同，是不是只能在子项目以最高版本的形式进行向下兼容？还是说子项目用分支形式进行版本管理？如果以分支形式管理，那感觉不是很适合业务开发，不同项目业务迭代进度不一样，分支管理容易产生问题；通用组件工具类型的倒是感觉挺合适的。
 
 
+### <a id='topic6' style='text-decoration:none;'>集成monorepo方案</a>
+有一些集成的`monorepo`方案，比如`nx`、`bazel`,`rushstack`，提供从初始化、开发、构建、测试到部署的全流程能力，有一套比较完整的`monorepo`基础设施,后续会继续深耕。

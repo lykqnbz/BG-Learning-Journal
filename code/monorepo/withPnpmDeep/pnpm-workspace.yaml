@@ -1,0 +1,3 @@
+packages:
+  # 前端项目存储的地方
+  - 'packages/*'
