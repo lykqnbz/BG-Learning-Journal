@@ -8,6 +8,3 @@ let arrayOfString1: string[] = ["1", "2", "3"]
 let arrayOfNumer2: Array<number> = [1, 2, 3]
 let arrayOfString2: Array<string> = ["1", "2", "3"]
 
-const x: [State, SetState] = [state, setState];
-const y: [SetState, State] = [setState, state];
-
