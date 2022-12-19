@@ -36,4 +36,4 @@ type cases = [
 //   if (!Array.isArray(arr)) return
 //   return arr.length
 // }
-// 对 TS 来说，元组和数组都是数组，但元组对 TS 来说可以观测其长度，T['length'] 对元组来说返回的是具体值，为了保证T上有length属性，所以要约束一定要是数组类型，然后typeof调取出来的内容具有readonly属性，所以也需要在约束中加入readonly。
+// 对TS来说，元组和数组都是数组，但元组对 TS 来说可以观测其长度，T['length'] 对元组来说返回的是具体值，为了保证T上有length属性，所以要约束一定要是数组类型，然后typeof调取出来的内容具有readonly属性，所以也需要在约束中加入readonly。
