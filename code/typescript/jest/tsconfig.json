@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/node10",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/sub-directory/*"
+      ]
+    }
+  }
+}
