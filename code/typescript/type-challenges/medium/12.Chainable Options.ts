@@ -28,10 +28,14 @@
 
 /* _____________ 你的代码 _____________ */
 
+// type Chainable<Result = {}> = {
+//   option: <K extends string, V>(key: K, value: V) => Chainable<Result & {
+//     [P in K]: V
+//   }>
+//   get: () => Result
+// }
 type Chainable<Result = {}> = {
-  option: <K extends string, V>(key: K, value: V) => Chainable<Result & {
-    [P in K]: V
-  }>
+  option<K extends string, V>(key: K extends keyof Result ? never : K, value: V): Chainable<Omit<Result, K> & { [P in K]: V }>
   get: () => Result
 }
 

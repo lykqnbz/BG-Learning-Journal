@@ -14,7 +14,10 @@
 /* _____________ 你的代码 _____________ */
 
 // type First<T extends any[]> = T[0]
-type First<T extends any[]> = T extends [] ? never : T[0]
+// 普通写法
+// type First<T extends any[]> = T extends [] ? never : T[0]
+// infer写法
+type First<T extends any[]> = T extends [infer P, ...infer K] ? P : never
 
 
 /* _____________ 测试用例 _____________ */
