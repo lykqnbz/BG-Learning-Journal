@@ -1,19 +1,22 @@
 import OrderDetail from './orderDetail'
 class Order {
-  public orderId: number = 0;
-  public date: Date = new Date();
-  public custname: string = "nocustname"
-  public phone: string = "111"
-  public orderDetailArray: Array<OrderDetail> = []
-  constructor(orderId_: number, date_: Date, custname_: string,
-    phone_: string, orderDetailArray_: Array<OrderDetail>) {
-    this.orderId = orderId_;
-    this.date = date_;
-    this.custname = custname_;
-    this.phone = phone_
-    this.orderDetailArray = orderDetailArray_
+  // public orderId: number = 0;
+  // public date: Date = new Date();
+  // public custname: string = "nocustname"
+  // public phone: string = "111"
+  // public orderDetailArray: Array<OrderDetail> = []
+  // constructor(orderId_: number, date_: Date, custname_: string,
+  //   phone_: string, orderDetailArray_: Array<OrderDetail>) {
+  //   this.orderId = orderId_;
+  //   this.date = date_;
+  //   this.custname = custname_;
+  //   this.phone = phone_
+  //   this.orderDetailArray = orderDetailArray_
+  // }
+  // ts4特性 构造器简化赋值
+  constructor(public orderId: number, public date: Date, public custname: string,
+    public phone: string, public orderDetailArray: Array<OrderDetail>) {
   }
-
   public static peisong() {
     let time = "2024-01-02"
   }
