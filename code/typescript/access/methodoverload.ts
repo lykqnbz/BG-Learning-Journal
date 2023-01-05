@@ -14,13 +14,26 @@ let messages: Message[] = [
 ]
 
 // 无重载
-function getMessage(value: number | MessageType): Message | Array<Message> | undefined {
+// function getMessage(value: number | MessageType): Message | Array<Message> | undefined {
+//   if (typeof value === 'number') {
+//     return messages.find(msg => { return value === msg.id })
+//   } else {
+//     return messages.filter(msg => { return value === msg.type })
+//   }
+// }
+
+// 有重载
+function getMessage(id: number): Message
+function getMessage(msgType: MessageType, readRecordCout: number): Message[]
+// function getMessage(value: number|MessageType, readRecordCout: number = 1): Message | Message[] | undefined {
+// function getMessage(value: any, readRecordCout: number = 1): any {
+function getMessage(value: any, readRecordCout: number = 1): Message | Message[] | undefined {
   if (typeof value === 'number') {
     return messages.find(msg => { return value === msg.id })
   } else {
-    return messages.filter(msg => { return value === msg.type })
+    return messages.filter(msg => { return value === msg.type }).splice(0, readRecordCout)
   }
 }
-
-// 有重载
+let msgs = getMessage('image', 2)
 export { }
+
