@@ -59,4 +59,28 @@ class Square {
 let square = new Square(40, 50)
 let charParamObj: type_CharParam = { width: 50, height: 90 }
 let square2 = new Square(charParamObj)
-console.log(square2.getArea())
+
+export default class LocalStorage {
+
+  static localStorage: LocalStorage
+  private constructor() {
+
+  }
+  public static getInstance() {
+    if (!this.localStorage) {
+      this.localStorage = new LocalStorage()
+    }
+    return this.localStorage
+  }
+  public static setItem(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value))
+  }
+
+  public static getItem(key: string) {
+    let value = localStorage.getItem(key)
+    return value ? JSON.parse(value) : null
+  }
+
+}
+LocalStorage.getInstance()
+
