@@ -63,6 +63,8 @@ let square2 = new Square(charParamObj)
 export default class LocalStorage {
 
   static localStorage: LocalStorage
+  count!: number;
+  private static total: number = 0
   private constructor() {
 
   }
@@ -79,6 +81,12 @@ export default class LocalStorage {
   public static getItem(key: string) {
     let value = localStorage.getItem(key)
     return value ? JSON.parse(value) : null
+  }
+  public static addTotal() {
+    this.total += 1
+  }
+  public static getToatl() {
+    return this.total
   }
 
 }
