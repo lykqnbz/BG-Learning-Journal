@@ -12,7 +12,7 @@ function Son(name, age, favor, sex) {
 
 }
 // function Son2 (name,age,address, sex) {
-//   this.favor = favor 
+//   this.favor = favor 3
 //   this.sex = sex
 // }
 // function Son3 (name,age,phone, sex) {
