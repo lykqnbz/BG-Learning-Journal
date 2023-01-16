@@ -1,0 +1,30 @@
+<div class="content">
+  <div>
+    <span>{{ title }}棒棒</span>
+  </div>
+  <input type="hidden" #selection>
+  <div>
+    <button (click)="selection.value = 'last'">
+      <span>除夕十三响</span>
+    </button>
+
+    <button (click)="selection.value = 'first'">
+      <span>春节十三响</span>
+    </button>
+    <button (click)="selection.value = 'first'" [disabled]="isDisabled" [style.color]="red">
+      <span>元宵十三响</span>
+    </button>
+  </div>
+  <div [ngSwitch]="selection.value">
+    <pre *ngSwitchDefault>除夕快乐</pre>
+    <pre *ngSwitchCase="'first'">春节快乐</pre>
+  </div>
+
+  <button type="button" (click)="changeDirection()">点我前往启动指南针</button>
+  <div *ngIf="direction==='left'; else left">
+    <p>{{message}}</p>
+  </div>
+  <ng-template #left>
+    <p>{{message}}</p>
+  </ng-template>
+</div>
