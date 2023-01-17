@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://bagen/dev/api",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Origin": "https://bagen/dev/api"
+    }
+  }
+}
