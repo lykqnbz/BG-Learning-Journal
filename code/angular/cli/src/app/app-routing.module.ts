@@ -6,25 +6,25 @@ import { CustomPreloadingStrategy } from '@/router/customPreloadingStrategy';
 const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('@/views/welcome/welcome.component').then((mod) => mod.WelcomeComponent),
+    loadComponent: () => import('@/views/welcome/welcome.view').then((mod) => mod.WelcomeView),
   },
   {
     path: 'home',
-    loadComponent: () => import('@/views/home/home.component').then((mod) => mod.HomeComponent),
+    loadComponent: () => import('@/views/home/home.view').then((mod) => mod.HomeView),
     children: [
       {
         path: 'list',
-        loadComponent: () => import('@/views/list/list.component').then((mod) => mod.ListComponent),
+        loadComponent: () => import('@/views/home/list/list.view').then((mod) => mod.ListView),
       },
       {
         path: 'person',
-        loadComponent: () => import('@/views/person/person.component').then((mod) => mod.PersonComponent),
+        loadComponent: () => import('@/views/home/person/person.view').then((mod) => mod.PersonView),
       },
     ],
   },
   {
     path: 'login',
-    loadComponent: () => import('@/components/login/login.component').then((mod) => mod.LoginComponent),
+    loadComponent: () => import('@/views/login/login.view').then((mod) => mod.LoginView),
   },
 ];
 

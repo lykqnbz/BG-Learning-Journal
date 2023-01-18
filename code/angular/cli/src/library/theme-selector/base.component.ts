@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
-
+import { CustomInjector } from './injector/custom-injector.service';
+import { TailwindColor } from './interfaces/tailwind-colors.interface';
+import { Requires } from './enum/requires.enum';
 
 
 @Component({
@@ -17,22 +19,27 @@ export class BaseComponent implements OnDestroy {
   primaryLight = '';
   primaryDark = '';
   primaryAlt = '';
+  plain = '-gray-400';
+  plainInv = '-gray-600';
+  neutral = '-gray-700';
+  neutralInv = '-gray-300';
+  default = '-gray-800';
+  defaultInv = '-gray-100';
+  contrast = '-gray-900';
+  contrastInv = '-gray-200';
+  dark = '-gray-900';
+  light = '-gray-100';
 
-  protected colorService: ColorService;
-  protected themeService: ThemeService;
-
-  constructor() {
-    const injector = CustomInjector.getInstance();
-    this.colorService = injector.get(ColorService);
-    this.themeService = injector.get(ThemeService);
-
-  }
 
   setGrayscale(): void {
     this.plain = this.darkTheme ? '-gray-600' : '-gray-400';
     this.plainInv = this.darkTheme ? '-gray-400' : '-gray-600';
     this.neutral = this.darkTheme ? '-gray-700' : '-gray-300';
     this.neutralInv = this.darkTheme ? '-gray-300' : '-gray-700';
+    this.default = this.darkTheme ? '-gray-800' : '-gray-100';
+    this.defaultInv = this.darkTheme ? '-gray-100' : '-gray-800';
+    this.contrast = this.darkTheme ? '-gray-900' : '-gray-50';
+    this.contrastInv = this.darkTheme ? '-gray-50' : '-gray-900';
   }
 
   setPrimaryColor(color: TailwindColor): void {
@@ -43,6 +50,5 @@ export class BaseComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.combinedSub.unsubscribe();
   }
 }
