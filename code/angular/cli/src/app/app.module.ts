@@ -10,12 +10,13 @@ import { AppComponent } from './app.component';
 // import { MonacoEditorModule } from '@rickzhou/ngx-monaco-editor';
 // import { BasicSyntaxModule } from '@views/basic-syntax/basic-syntax.module';
 import { CommonModule } from '@angular/common';
+import { PipeModuleModule } from '@/pipes/pipeModule.module';
 
 @NgModule({
   // 引入组件 / 指令 / 管道
   declarations: [AppComponent],
   // 引入其他 NgModule
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, PipeModuleModule],
   // 在全局服务中生效的一些Provider
   providers: [],
   // 导入组件 / 指令 / 管道  在declarations引入的模版中就可以使用这些

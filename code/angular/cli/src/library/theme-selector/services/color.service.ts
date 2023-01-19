@@ -7,9 +7,10 @@ import { TailwindColor, TailwindColorPalette } from '../interfaces/tailwind-colo
 @Injectable()
 export class ColorService {
   twColors: TailwindColorPalette = _twColors as any;
-  ignoredColors = ['inherit', 'transparent',];
-  grayScaleColors = ['slate', 'gray', 'zinc', 'neutral'];
+  ignoredColors = ['inherit', 'transparent', 'current', 'black', 'white', 'lightblue'];
+  grayScaleColors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'warmgray', 'bluegray', 'coolgray', 'truegray'];
   private key = 'custom-current-color';
+  private currentColor!: BehaviorSubject<TailwindColor>;
   private defaultColor: TailwindColor = {
     name: 'violet',
     shades: this.twColors['violet'],
@@ -21,6 +22,24 @@ export class ColorService {
   constructor() {
     this.setupColors();
   }
+
+  setCurrentColor(currentColor: TailwindColor): void {
+    localStorage.setItem(this.key, currentColor.name);
+    this.currentColor.next(currentColor);
+  }
+
+  getCurrentColor(): Observable<TailwindColor> {
+    return this.currentColor;
+  }
+
+  getAllColors(): TailwindColor[] {
+    return this.colors;
+  }
+
+  getGrayscale(): TailwindColor[] {
+    return this.grayscale;
+  }
+
   setupColors(): void {
     this.allTailwindColors = Object.getOwnPropertyNames(this.twColors)
       .filter((color) => !this.ignoredColors.includes(color.toLowerCase()))
@@ -31,8 +50,15 @@ export class ColorService {
         };
         return mappedColor;
       });
+    this.colors = this.allTailwindColors.filter((color) => !this.isGrayscale(color));
+    this.grayscale = this.allTailwindColors.filter((color) => this.isGrayscale(color));
 
     const savedColor = localStorage.getItem(this.key);
     const color = this.colors.find((color) => color.name === savedColor) || this.defaultColor;
+    this.currentColor = new BehaviorSubject<TailwindColor>(color);
+  }
+
+  isGrayscale(color: TailwindColor): boolean {
+    return this.grayScaleColors.includes(color.name.toLowerCase());
   }
 }

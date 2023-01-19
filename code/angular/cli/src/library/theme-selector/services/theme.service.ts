@@ -13,4 +13,13 @@ export class ThemeService {
     this.isDarkTheme = new BehaviorSubject<boolean>(useDarkTheme);
     localStorage.setItem(this.themeKey, this.isDarkTheme.value.toString());
   }
+
+  setDarkTheme(isDarkTheme: boolean): void {
+    this.isDarkTheme.next(isDarkTheme);
+    localStorage.setItem(this.themeKey, this.isDarkTheme.value.toString());
+  }
+
+  getDarkTheme(): Observable<boolean> {
+    return this.isDarkTheme;
+  }
 }

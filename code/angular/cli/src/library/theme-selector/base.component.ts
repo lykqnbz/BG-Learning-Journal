@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
 import { CustomInjector } from './injector/custom-injector.service';
+import { ColorService } from './services/color.service';
+import { ThemeService } from './services/theme.service';
 import { TailwindColor } from './interfaces/tailwind-colors.interface';
 import { Requires } from './enum/requires.enum';
 
@@ -30,6 +32,20 @@ export class BaseComponent implements OnDestroy {
   dark = '-gray-900';
   light = '-gray-100';
 
+  protected colorService: ColorService;
+  protected themeService: ThemeService;
+
+  constructor() {
+    const injector = CustomInjector.getInstance();
+    this.colorService = injector.get(ColorService);
+    this.themeService = injector.get(ThemeService);
+
+    this.combinedSub = combineLatest([this.themeService.getDarkTheme(), this.colorService.getCurrentColor()]).subscribe(([theme, color]: [boolean, TailwindColor]) => {
+      this.darkTheme = theme;
+      this.setPrimaryColor(color);
+      this.setGrayscale();
+    });
+  }
 
   setGrayscale(): void {
     this.plain = this.darkTheme ? '-gray-600' : '-gray-400';
@@ -50,5 +66,6 @@ export class BaseComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.combinedSub.unsubscribe();
   }
 }

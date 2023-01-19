@@ -12,9 +12,12 @@ specifiers:
   '@angular/platform-browser': ^15.1.0
   '@angular/platform-browser-dynamic': ^15.1.0
   '@angular/router': ^15.1.0
+  '@rickzhou/ngx-cdk': ^14.1.0
+  '@rickzhou/ngx-monaco-editor': ^14.0.0
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.9
   '@types/jasmine': ~4.3.0
+  '@types/lodash-es': ^4.17.6
   '@types/node': ^18.11.18
   autoprefixer: ^10.4.13
   jasmine-core: ~4.5.0
@@ -23,6 +26,7 @@ specifiers:
   karma-coverage: ~2.2.0
   karma-jasmine: ~5.1.0
   karma-jasmine-html-reporter: ~2.0.0
+  lodash: ^4.17.21
   ng-inline-svg-2: ^15.0.1
   postcss: ^8.4.21
   rxjs: ~7.8.0
@@ -40,8 +44,12 @@ dependencies:
   '@angular/platform-browser': 15.1.0_eifxzngnnnjsj3jgsq7frmjnk4
   '@angular/platform-browser-dynamic': 15.1.0_bjmxt24dowfhcklhftsg4zga3a
   '@angular/router': 15.1.0_shtnd5whtbyicxnxmafd6uxkza
+  '@rickzhou/ngx-cdk': 14.1.0_uqqi3gwqbwkizcyszoilo5fotm
+  '@rickzhou/ngx-monaco-editor': 14.0.0_uqqi3gwqbwkizcyszoilo5fotm
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.4
+  '@types/lodash-es': 4.17.6
+  lodash: 4.17.21
   ng-inline-svg-2: 15.0.1_3e2gva3abr47aao2vtelp5nl2e
   rxjs: 7.8.0
   tslib: 2.4.1
@@ -2010,6 +2018,31 @@ packages:
       - supports-color
     dev: true
 
+  /@rickzhou/ngx-cdk/14.1.0_uqqi3gwqbwkizcyszoilo5fotm:
+    resolution: {integrity: sha512-B1OELhyicm4r0N1SligScGPYyt7SyYiKzFJMCN6vPgP17LsqdOCN2lNL0de65P4jokSHPAczhaVSagObzE8Lsw==}
+    peerDependencies:
+      '@angular/common': ^14.0.0
+      '@angular/core': ^14.0.0
+      deepmerge: ^4.2.2
+    dependencies:
+      '@angular/common': 15.1.0_da7kisvgd6fwe32k5n7hd5z3wa
+      '@angular/core': 15.1.0_rxjs@7.8.0+zone.js@0.12.0
+      lodash-es: 4.17.21
+      tslib: 2.4.1
+    dev: false
+
+  /@rickzhou/ngx-monaco-editor/14.0.0_uqqi3gwqbwkizcyszoilo5fotm:
+    resolution: {integrity: sha512-IZRvRx8CezFMaCQl2iQ8tALZiA6T1ARCyBnBqDxoFkM3dIi/iQyieMoLtjZupNJFfq3ezKc/SGd4rttp7owHjA==}
+    peerDependencies:
+      '@angular/common': ^14.0.0
+      '@angular/core': ^14.0.0
+      monaco-editor: ^0.34.0
+    dependencies:
+      '@angular/common': 15.1.0_da7kisvgd6fwe32k5n7hd5z3wa
+      '@angular/core': 15.1.0_rxjs@7.8.0+zone.js@0.12.0
+      tslib: 2.4.1
+    dev: false
+
   /@schematics/angular/15.1.1:
     resolution: {integrity: sha512-Ujo4vt/r3WzIhGn2I2Lt3eOTWSsVxoXfcXxFRuxl3cil/9mH1X66hDTQ2DVYiXPFGcQMjcNaDwlQxyor4yGbqA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -2135,6 +2168,16 @@ packages:
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: false
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: false
 
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
@@ -4482,6 +4525,10 @@ packages:
       p-locate: 4.1.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.castarray/4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: false
@@ -4500,7 +4547,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
